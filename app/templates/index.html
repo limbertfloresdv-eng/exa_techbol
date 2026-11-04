@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | TechBol{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h2 class="page-title">Dashboard</h2>
+    <p class="text-secondary">Bienvenido al sistema de gestión TechBol.</p>
+</div>
+
+<div class="row g-4 mb-4">
+
+    <div class="col-md-4">
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-secondary mb-1">Total de clientes</p>
+                    <h2 class="fw-bold">{{ total_clientes }}</h2>
+                </div>
+                <div class="stat-icon bg-primary-subtle text-primary">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-secondary mb-1">Total de productos</p>
+                    <h2 class="fw-bold">{{ total_productos }}</h2>
+                </div>
+                <div class="stat-icon bg-success-subtle text-success">
+                    <i class="fas fa-box"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-secondary mb-1">Total de pedidos</p>
+                    <h2 class="fw-bold">{{ total_pedidos }}</h2>
+                </div>
+                <div class="stat-icon bg-warning-subtle text-warning">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card p-4">
+    <h5 class="fw-bold mb-3">Accesos rápidos</h5>
+
+    <div class="row g-3">
+        <div class="col-md-4">
+            <a href="{{ url_for('clientes.crear') }}" class="btn btn-primary w-100 p-3">
+                <i class="fas fa-user-plus me-2"></i> Nuevo cliente
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{{ url_for('productos.crear') }}" class="btn btn-success w-100 p-3">
+                <i class="fas fa-plus me-2"></i> Nuevo producto
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{{ url_for('pedidos.crear') }}" class="btn btn-warning w-100 p-3">
+                <i class="fas fa-cart-plus me-2"></i> Nuevo pedido
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

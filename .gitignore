@@ -1,0 +1,17 @@
+# Entorno virtual
+venv/
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Variables de entorno
+.env
+
+# Base de datos local
+techbol.db
+
+# Archivos del editor
+.vscode/

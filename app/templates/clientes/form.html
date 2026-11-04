@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Formulario de clientes | TechBol{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h2 class="page-title">
+        {{ 'Editar cliente' if cliente else 'Registrar cliente' }}
+    </h2>
+    <p class="text-secondary">Ingresa los datos del cliente.</p>
+</div>
+
+<div class="card p-4">
+    <form method="POST">
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Nombre completo</label>
+            <input type="text" name="nombre" class="form-control"
+                   value="{{ cliente.nombre if cliente else '' }}"
+                   maxlength="100" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-semibold">Teléfono</label>
+            <input type="text" name="telefono" class="form-control"
+                   value="{{ cliente.telefono if cliente else '' }}"
+                   maxlength="20" required>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save me-2"></i> Guardar
+            </button>
+
+            <a href="{{ url_for('clientes.index') }}" class="btn btn-secondary">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

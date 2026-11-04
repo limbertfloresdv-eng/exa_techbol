@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Clientes | TechBol{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="page-title">Clientes</h2>
+        <p class="text-secondary">Administración de clientes registrados.</p>
+    </div>
+
+    <a href="{{ url_for('clientes.crear') }}" class="btn btn-primary">
+        <i class="fas fa-plus me-2"></i> Nuevo cliente
+    </a>
+</div>
+
+<div class="card p-3">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.id }}</td>
+                    <td class="fw-semibold">{{ cliente.nombre }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td class="text-center">
+                        <a href="{{ url_for('clientes.editar', id=cliente.id) }}"
+                           class="btn btn-sm btn-warning">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        <form action="{{ url_for('clientes.eliminar', id=cliente.id) }}"
+                              method="POST" class="d-inline"
+                              onsubmit="return confirm('¿Eliminar este cliente?')">
+                            <button class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-secondary py-4">
+                        No hay clientes registrados.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
